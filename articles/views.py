@@ -3,5 +3,5 @@ from django.http import JsonResponse
 
 
 # Create your views here.
-def articles(request):
+def home(request):
     return render(request, "articles.html")

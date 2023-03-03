@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Articles</title>
+        <title>{% block title %}{% endblock title %}</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         {% tailwind_css %}
     </head>
 
-    <body class="bg-slate-800 font-serif leading-normal tracking-normal">
+    <body class="bg-green-800 font-serif">
         {% include "navbar.html" %}
-        <div class="container mx-auto">{% block articles %} {% endblock articles %}</div>
+        <div class="container mx-auto">{% block articles %}{% endblock articles %}</div>
         {% include "footer.html" %}
     </body>
 </html>
