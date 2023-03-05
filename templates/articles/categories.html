@@ -4,9 +4,9 @@
 {% block body %}
 {% load static %}
 {% load static tailwind_tags %}{% tailwind_css %}
-<section class="flex flex-row flex-wrap justify-center my-8">
+<section class="flex flex-row flex-wrap justify-start  my-8">
     {% for category in categories %}
-    <article class=" shadow-md shadow-slate-400 bg-[#B9F3E4] rounded-lg w-72 flex flex-col items-center m-4 group">
+    <article class=" shadow-md shadow-slate-300 hover:shadow-lg bg-[#B9F3E4] rounded-lg w-72 flex flex-col  m-4 group">
         <div class="relative overflow-hidden rounded-t-lg">
              <img src="{{category.image.url}}" alt="btc" class="transform ease-in-out duration-500 object-fill h-48 w-96 rounded-t-lg group-hover:scale-110 ">
         </div>

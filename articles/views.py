@@ -1,10 +1,18 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Article, Category
+from .models import Article, Category, WebsiteInfo
+from django.db.models import Q
 
 
 # Create your views here.
 def home(request):
-    articles = Article.objects.all()
+    search = request.GET["search"] if request.GET else None
+    print("search", search)
+    articles = (
+        Article.objects.filter(Q(title__contains=search) | Q(content__contains=search))
+        if search is not None
+        else Article.objects.all()
+    )
+    # articles =
     return render(request, "articles/articles.html", {"articles": articles})
 
 
@@ -21,3 +29,8 @@ def categories(request):
 def category_detail(request, category_id):
     articles = Article.objects.filter(category=category_id)
     return render(request, "articles/category_detail.html", {"articles": articles})
+
+
+def about(request):
+    website = WebsiteInfo.objects.all().first()
+    return render(request, "about.html", {"website":website})

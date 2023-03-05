@@ -11,8 +11,8 @@
 
     <body class="bg-[#EEEEEE]">
         {% include "navbar.html" %}
-        <div class="mx-auto ">
-            {% block body %} {% endblock body %}
+        <div class="mx-auto flex flex-row justify-center items-start">
+            {% block body %} {% endblock body %} {% include "sidebar.html" %}
         </div>
         {% include "footer.html" %}
     </body>

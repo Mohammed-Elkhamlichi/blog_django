@@ -4,7 +4,7 @@
 {% block body %}
 {% load static %}
 {% load static tailwind_tags %}{% tailwind_css %}
-<section class="flex flex-row flex-wrap justify-center my-8">
+<section class="flex flex-row flex-wrap justify-start my-8 w-2/3">
     {% comment %} {% for i in "x"|rjust:"20" %} {% endcomment %}
     {% for article in articles %}
     <article class=" shadow-md shadow-slate-300 hover:shadow-lg hover:shadow-slate-300 bg-[#B9F3E4] rounded-lg w-72 flex flex-col items-center m-4 group">
@@ -20,7 +20,6 @@
                  <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
                  
                  <a href="{% url 'articles:article_detail' article.id %}" class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "eye" class="text-yellow-600 cursor-pointer group-hover:text-yellow-500" %}</a>
-                
              </div>
          </div>
      </article>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+{% load heroicons %} 
+{% block title %} Articles {% endblock title %}
+{% block body %}
+{% load static %}
+{% load static tailwind_tags %}{% tailwind_css %}
+<section class="m-auto bg-[#B9F3E4] w-2/3 my-8 rounded-lg p-8 mx-4 shadow-md shadow-slate-300 hover:shadow-lg">
+    {{website.about|safe}}
+</section>
+{% endblock body %}

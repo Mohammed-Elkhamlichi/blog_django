@@ -26,3 +26,15 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class WebsiteInfo(models.Model):
+    name = models.CharField(max_length=250, blank=True, null=True)
+    description = RichTextField(blank=True, null=True)
+    about = RichTextField(blank=True, null=True)
+    facebook = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
