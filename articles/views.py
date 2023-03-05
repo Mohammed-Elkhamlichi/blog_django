@@ -16,3 +16,8 @@ def article_detail(request, article_id):
 def categories(request):
     category_list = Category.objects.all()
     return render(request, "articles/categories.html", {"categories": category_list})
+
+
+def category_detail(request, category_id):
+    articles = Article.objects.filter(category=category_id)
+    return render(request, "articles/category_detail.html", {"articles": articles})
