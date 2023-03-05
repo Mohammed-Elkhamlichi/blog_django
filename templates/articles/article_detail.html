@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% block title %}{% endblock title %}
+
+{% block body %}
+<section class="m-auto bg-[#B9F3E4] w-2/3 my-4 rounded-lg p-4">
+    <h1 class="mt-4 text-4xl ">{{article.title}}</h1>
+    <div class="flex flex-row items-center my-3 justify-center">
+        <p class="mr-2">By: <span class="text-blue-500">{{article.author}}</span></p>
+        <p class="mx-2">Create at: <span class="text-blue-500">{{article.create_at}}</span></p>
+        <p class="ml-2">Update at: <span class="text-blue-500">{{article.update_at}}</span></p>
+    </div>
+    <div class="mt-4"><img class="rounded-xl" src="{{article.image.url}}" alt=""></div>
+    <div class="mt-4">{{article.content|safe}}</div>
+</section>
+{% endblock body %}
