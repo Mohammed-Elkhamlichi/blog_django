@@ -1,29 +1,32 @@
-{% load heroicons %} {% load static %} {% load static tailwind_tags %}{% tailwind_css %}
+{% load heroicons %} 
+{% load static %} 
+{% load static tailwind_tags %}{% tailwind_css %}
 
-<section class="flex flex-row flex-wrap justify-start my-6 w-1/3">
-    {% for i in "x"|rjust:"10" %}
+<section class="flex flex-row flex-wrap justify-start items-justify my-4 w-1/3">
+    {% for article in last_articles %}
     <article
-        class="shadow-md shadow-slate-300 hover:shadow-lg hover:shadow-slate-300 bg-[#B9F3E4] rounded-lg w-40 flex flex-col items-center m-2 group"
+        class="shadow-md shadow-slate-300 hover:shadow-lg hover:shadow-slate-300 bg-[#B9F3E4] rounded-lg w-48 flex flex-col items-center mx-2 my-4 group"
     >
-        <div class="relative overflow-hidden rounded-t-lg">
+        <div class="relative overflow-hidden rounded-t-lg m-0">
             <img
-                src="{% static 'images/btc.jpg' %}"
+                src="{{ article.image.url }}"
                 alt="btc"
-                class="transform ease-in-out duration-500 object-fill h-28 w-96 rounded-t-lg group-hover:scale-110"
+                class="transform ease-in-out duration-500 object-fill h-32 w-96 rounded-t-lg group-hover:scale-110"
             />
             <a
-                href=""
-                class="hidden rounded-lg px-4 py-2 text-yellow-300 cursor-pointe text-center group-hover:absolute group-hover:block bg-slate-700 top-0 right-0 m-1"
-                >crypto</a
+                href="{% url 'articles:category_detail' article.category.id %}"
+                class="hidden rounded-lg px-4 py-2 text-yellow-300 cursor-pointe text-center group-hover:absolute group-hover:block bg-slate-700 top-0 right-0 text-sm"
+                >{{article.category}}</a
             >
         </div>
-        <div class="p-4 flex flex-col items-center">
-            <a href="#" class="text-gray-400 py-3 w-full text-justify text-base">The Bitcoin is the future</a>
-
-            <div class="flex flex-row justify-between items-center w-full">
-                <button class="group mx-2  border-2 px-4     py-2 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
+        <div class="p-2 flex flex-col items-center">
+            <a href="{% url 'articles:article_detail' article.id %}" class="text-gray-400 w-full text-justify text-sm"
+                >{{article.title|slice:40}}...</a
+            >
+            <div class="flex flex-row justify-between items-center w-full mt-4">
+                <button class="group mx-2  border-2 px-3 py-1 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500 h-5" %}</button>
                 
-                <a href="#" class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "eye" class="text-yellow-600 cursor-pointer group-hover:text-yellow-500" %}</a>
+                <a href="{% url 'articles:article_detail' article.id %}" class="group mx-2  border-2 px-3 py-1 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "eye" class="text-yellow-600 cursor-pointer group-hover:text-yellow-500 h-5" %}</a>
             </div>
         </div>
     </article>

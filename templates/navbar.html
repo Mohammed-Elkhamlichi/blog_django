@@ -3,7 +3,15 @@
     class="bg-[#B9F3E4] shadow-md shadow-slate-300 flex flex-row justify-between px-4 items-center"
 >
     <a href="{% url 'articles:home' %}" class="text-2xl text-yellow-600 p-4">ELKHAMLICHI</a>
-    {% include "search.html" %}
+    <form class="outline-none hidden lg:block" action="/">
+        <input
+            type="search"
+            name="search"
+            placeholder="search"
+            id="search"
+            class="rounded-lg w-96 outline-none border-none"
+        />
+    </form>
     <ul class="flex flex-row items-center">
         <li class="mx-2">
             <a
@@ -18,7 +26,19 @@
             >
         </li>
         <li class="mx-2">
+            <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-xl hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
+        </div>
+        <li class="mx-2">
             <a href="" class="text-xl text-yellow-600 font-sans">{% heroicon_outline "bars-3" %}</a>
         </li>
     </ul>
 </nav>
+    <form class="outline-none flex lg:hidden mx-auto w-96 md:w-2/3 justify-center mt-4" action="/">
+        <input
+            type="search"
+            name="search"
+            placeholder="search"
+            id="search"
+            class="rounded-lg w-96 outline-none border-none"
+        />
+    </form>
