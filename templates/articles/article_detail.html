@@ -1,16 +1,16 @@
 {% extends 'base.html' %} {% block title %}{% endblock title %} {% block body %}
-<section class="m-auto bg-[#B9F3E4] w-2/3 my-8 rounded-lg p-8 mx-4 shadow-md shadow-slate-300 hover:shadow-lg">
-    <h1 class="mt-4 text-4xl">{{article.title}}</h1>
-    <div class="flex flex-row items-center my-3 justify-center">
-        <p class="mr-2">By: <span class="text-blue-500">{{article.author}}</span></p>
-        <p class="mr-2">
+<section class="m-auto bg-[#B9F3E4]  w-full sm:w-2/3 my-8 rounded-lg p-8 mx-4 shadow-md shadow-slate-300 hover:shadow-lg">
+    <h1 class="mt-4 text-3xl text-justify">{{article.title}}</h1>
+    <div class="flex flex-col md:flex-row md:items-center my-3 items-start md:justify-center">
+        <p class="mx-2">By: <span class="text-blue-500">{{article.author}}</span></p>
+        <p class="mx-2">
             Category:
             <a href="{% url 'articles:category_detail' article.category.id %}" class="text-blue-500"
                 >{{article.category}}</a
             >
         </p>
         <p class="mx-2">Create at: <span class="text-blue-500">{{article.create_at}}</span></p>
-        <p class="ml-2">Update at: <span class="text-blue-500">{{article.update_at}}</span></p>
+        <p class="mx-2">Update at: <span class="text-blue-500">{{article.update_at}}</span></p>
     </div>
     <div class="mt-4"><img class="rounded-xl" src="{{article.image.url}}" alt="" /></div>
     <div class="mt-4">{{article.content|safe}}</div>

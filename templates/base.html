@@ -1,5 +1,5 @@
-{% load static tailwind_tags %}
 {% load static %}
+{% load static tailwind_tags %} 
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,10 +12,11 @@
 
     <body class="bg-[#EEEEEE]">
         {% include "navbar.html" %}
-        <div class="mx-auto flex flex-row justify-center items-start">
+        <div class="mx-auto flex flex-col justify-center items-center md:flex-row">
             {% block body %} {% endblock body %} {% include "sidebar.html" %}
         </div>
         {% include "footer.html" %}
+
         <script src="{% static 'js/navbar.js' %}"></script>
     </body>
 </html>
