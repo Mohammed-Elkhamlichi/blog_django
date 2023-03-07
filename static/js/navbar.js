@@ -8,7 +8,7 @@ BtnCloseOpenNavbar.addEventListener("click", (e) => {
     } else if (navbarUl.classList[0] === "hidden") {
         navbarUl.setAttribute(
             "class",
-            "flex flex-col z-10 items-right absolute left-0 right-0 top-16 h-screen bg-[#B9F3E4] w-full"
+            "flex flex-col items-right absolute left-0 right-0 top-16 h-screen bg-[#B9F3E4] w-full"
         );
     }
     console.log(navbarUl.classList);

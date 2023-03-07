@@ -1,7 +1,5 @@
 {% load heroicons %} {% load static tailwind_tags %} {% tailwind_css %}
-<nav
-    class="bg-[#B9F3E4] shadow-md shadow-slate-300 flex flex-row justify-between px-4 items-center"
->
+<nav class="bg-[#B9F3E4] shadow-md shadow-slate-300 flex flex-row justify-between items-center px-4">
     <a href="{% url 'articles:home' %}" class="text-2xl text-yellow-600 p-4">ELKHAMLICHI</a>
     <form class="outline-none hidden lg:block" action="/">
         <input
@@ -12,31 +10,37 @@
             class="rounded-lg w-96 outline-none border-none"
         />
     </form>
-    <ul class="hidden" id="navbar_ul">
-        <li class="transform duration-200 ease-in-out mx-2 py-4 hover:border-l-2 hover:border-l-black">
-            <a
-                class="text-xl text-yellow-600 p-4 font-sans rounded-lg hover:text-black"
-                href="{% url 'articles:about' %}"
-                >About</a
-            >
-        </li>
-        <li class="transform duration-200 ease-in-out mx-2 py-4 hover:border-l-2 hover:border-l-black">
-            <a class="text-xl text-yellow-600 p-4 font-sans hover:text-black" href="{% url 'articles:categories' %}"
-                >Collections</a
-            >
-        </li>
-        <li class="mx-2 py-4">
-            <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-xl hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
-        </div>
-    </ul>
-    <button id="navbar_btn_close_open" href="" class="text-xl text-yellow-600 font-sans sm:hidden hover:border hover:border-gray-500 py-2 rounded-lg px-4">{% heroicon_outline "bars-3" %}</button>
+    <button
+        id="navbar_btn_close_open"
+        href=""
+        class="text-xl text-yellow-600 font-sans sm:hidden hover:border hover:border-gray-500 py-2 rounded-lg px-4"
+    >
+        {% heroicon_outline "bars-3" %}
+    </button>
 </nav>
-    <form class="outline-none flex lg:hidden mx-auto w-96 md:w-2/3 justify-center mt-4" action="/">
-        <input
-            type="search"
-            name="search"
-            placeholder="search"
-            id="search"
-            class="rounded-lg w-96 outline-none border-none"
-        />
-    </form>
+<ul class="flex flex-col items-start h-screen bg-[#B9F3E4] z-50" id="navbar_ul">
+  <li class="transform duration-200 ease-in-out mx-2 py-4 hover:border-l-2 hover:border-l-black">
+      <a
+          class="text-xl text-yellow-600 p-4 font-sans rounded-lg hover:text-black"
+          href="{% url 'articles:about' %}"
+          >About</a
+      >
+  </li>
+  <li class="transform duration-200 ease-in-out mx-2 py-4 hover:border-l-2 hover:border-l-black">
+      <a class="text-xl text-yellow-600 p-4 font-sans hover:text-black" href="{% url 'articles:categories' %}"
+          >Collections</a
+      >
+  </li>
+  <li class="mx-2 py-4">
+      <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-xl hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
+  </div>
+</ul>
+<form class="outline-none flex lg:hidden mx-auto w-96 md:w-2/3 justify-center mt-4" action="/">
+    <input
+        type="search"
+        name="search"
+        placeholder="search"
+        id="search"
+        class="rounded-lg w-96 outline-none border-none"
+    />
+</form>
