@@ -12,7 +12,7 @@
 
     <body class="bg-[#EEEEEE]">
         {% include "navbar.html" %}
-        <div class="mx-auto flex flex-col justify-center items-center md:flex-row">
+        <div class="mx-auto flex flex-col justify-center items-center md:flex-row md:items-start md:justify-start w-full">
             {% block body %} {% endblock body %} {% include "sidebar.html" %}
         </div>
         {% include "footer.html" %}

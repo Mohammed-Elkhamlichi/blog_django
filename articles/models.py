@@ -13,9 +13,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+    
 
 
 class Article(models.Model):
+    likes = models.ManyToManyField(User, blank=True, null=True, related_name="post_likes")
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, blank=True, null=True)
     title = models.CharField(max_length=255)
@@ -26,6 +28,7 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
 
 
 class WebsiteInfo(models.Model):

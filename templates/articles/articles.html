@@ -4,21 +4,27 @@
 {% block body %}
 {% load static %}
 {% load static tailwind_tags %}{% tailwind_css %}
-<section class="flex flex-row flex-wrap justify-center items-center my-8 w-full sm:2/3 z-0">
+<section class="flex flex-row flex-wrap justify-center items-center my-8 w-full  md:my-4 md:justify-center items-start md:w-auto z-2">
     {% comment %} {% for i in "x"|rjust:"20" %} {% endcomment %}
     {% for article in articles %}
-    <article class=" shadow-md shadow-slate-300 hover:shadow-lg hover:shadow-slate-300 bg-[#B9F3E4] rounded-lg  w-96 sm:w-72 flex flex-col items-center m-4 group z-0">
-        <div class="overflow-hidden rounded-t-lg z-0">
-             <img src="{{article.image.url}}" alt="btc" class="transform ease-in-out duration-500 object-fill h-72 sm:h-48 w-96 rounded-t-lg group-hover:scale-110 z-0">
+    
+    <article class=" shadow-md shadow-slate-300 hover:shadow-lg hover:shadow-slate-300 bg-[#B9F3E4] rounded-lg  w-96 sm:w-72 flex flex-col items-center m-4 group">
+        <div class="relative overflow-hidden rounded-t-lg">
+             <img src="{{article.image.url}}" alt="btc" class="transform ease-in-out duration-500 object-fill h-72 sm:h-48 w-96 rounded-t-lg group-hover:scale-110 z-1">
              <a href="{% url 'articles:category_detail' article.category.id %}" class="hidden rounded-lg  px-4 py-2 text-yellow-300  cursor-pointe text-center group-hover:absolute group-hover:block bg-slate-700 top-0 right-0 m-1">{{article.category}}</a>
         </div>
          <div class="p-4 flex flex-col items-center">
              <a href="{% url 'articles:article_detail' article.id %}" class="text-gray-400 py-3 w-full text-justify text-lg">{{article.title}}</a>
              {% comment %} <p class="mt-4">{{article.content|slice:120|safe}}...</p> {% endcomment %}
              <div class="flex flex-row justify-between items-center w-full mt-6">
-                 <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
+                {% if request.user in article.likes.all %}
+                <button class=" group-mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg border-white  bg-red-600">{% heroicon_solid "heart" class="text-red-600 cursor-pointer text-white hover:text-yellow-300" %}
+                </button>
+               {% else %}
+               <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
+               {% endif %}
                  
-                 <a href="{% url 'articles:article_detail' article.id %}" class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400">{% heroicon_solid "eye" class="text-yellow-600 cursor-pointer group-hover:text-yellow-500" %}</a>
+                 <a href="{% url 'articles:article_detail' article.id %}" class="group mx-2  border-2 px-4 py-2 border-gray-500 group-hover:border-white rounded-lg group-hover:bg-yellow-600">{% heroicon_solid "eye" class="text-yellow-500 cursor-pointer group-hover:text-white" %}</a>
              </div>
          </div>
      </article>
