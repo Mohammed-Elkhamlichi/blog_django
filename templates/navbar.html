@@ -31,12 +31,12 @@
         
     </ul>
     <div class="flex flex-row">
-        <button class="group border-2 px-4 py-2 border-gray-500 rounded-xl border-white bg-red-600 flex flex-row items-center mx-2">
-            <div class="font-bold text-black text-xl text-white group-hover:text-yellow-300" >+2</div>
+        <a href="{% url 'articles:favorited_articles' %}" class="group border-2 px-4 py-2  rounded-xl border-white bg-red-600 flex flex-row items-center mx-2 cursor-pointer">
+            <div class="font-bold  text-xl text-white group-hover:text-yellow-300" >+{{favorited_articles_list}}</div>
             <div>
                 {% heroicon_solid "heart" class="cursor-pointer text-white group-hover:text-yellow-300" %}
             </div>
-        </button>
+        </a>
         <button
             id="navbar_btn_close_open"
             href=""

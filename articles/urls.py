@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, article_detail, categories, category_detail, about
+from .views import home, article_detail, categories, category_detail, about, favorited_articles
 
 app_name = "articles"
 
@@ -9,4 +9,5 @@ urlpatterns = [
     path("categories/list/", categories, name="categories"),
     path("categories/<int:category_id>/detail/", category_detail, name="category_detail"),
     path("about/", about, name="about"),
+    path("favorites/", favorited_articles, name="favorited_articles"),
 ]

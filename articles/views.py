@@ -33,4 +33,14 @@ def category_detail(request, category_id):
 
 def about(request):
     website = WebsiteInfo.objects.all().first()
-    return render(request, "about.html", {"website":website})
+    return render(request, "about.html", {"website": website})
+
+
+def favorited_articles(request):
+    articles = Article.objects.all()
+    articles_list = []
+    for article in articles:
+        if request.user in article.likes.all():
+            articles_list.append(article)
+
+    return render(request, "articles/favorited_articles.html", {"articles": articles_list})
