@@ -1,4 +1,10 @@
-{% extends 'base.html' %} {% block title %}{% endblock title %} {% block body %} 
+{% extends 'base.html' %} 
+{% block title %}{{article.title}}{% endblock title %}
+{% block meta_tags %}
+<meta name="description" content="rechargeable multifunction shaver">
+<meta name="keywords" content="">
+{% endblock meta_tags %} 
+{% block body %} 
 {% load heroicons %}
 <section
     class="m-auto bg-[#B9F3E4] w-full md:w-2/3 my-8 rounded-lg p-8 mx-4 shadow-md shadow-slate-300 hover:shadow-lg"

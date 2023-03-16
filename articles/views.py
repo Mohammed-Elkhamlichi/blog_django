@@ -1,9 +1,21 @@
 from django.shortcuts import render, get_object_or_404
+from rest_framework.response import Response
+from django.http import JsonResponse
 from .models import Article, Category, WebsiteInfo
+from .serializers import ArticleSerializer
 from django.db.models import Q
 
 
 # Create your views here.
+# Favorate Article
+def favorate_article(request, article_id):
+    article = Article.objects.get(pk=article_id)
+    articleSerializer = ArticleSerializer(data=article)
+    print(request.GET)
+    return Response(data=articleSerializer)
+
+
+# The Home Page
 def home(request):
     search = request.GET["search"] if request.GET else None
     print("search", search)
