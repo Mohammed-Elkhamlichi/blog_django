@@ -24,10 +24,10 @@
              {% comment %} <p class="mt-4">{{article.content|slice:120|safe}}...</p> {% endcomment %}
              <div class="flex flex-row justify-between items-center w-full mt-6">
                 {% if request.user in article.likes.all %}
-                <button class=" group-mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg border-white  bg-red-600 favorate_btn" id={{article.id}}>{% heroicon_solid "heart" class="text-red-600 cursor-pointer text-white hover:text-yellow-300" %}
+                <button  class=" group-mx-2  border-2 px-4 py-2 rounded-lg border-white  bg-red-600 favorate_btn" id="{{article.id}}_like">{% heroicon_solid "heart" class=" cursor-pointer text-white hover:text-yellow-300" %}
                 </button>
                {% else %}
-               <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400 favorate_btn" id={{article.id}}>{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
+               <button class="group mx-2  border-2 px-4 py-2 border-gray-500 rounded-lg hover:border-gray-400 favorate_btn" id="{{article.id}}_unlike">{% heroicon_solid "heart" class="text-red-600 cursor-pointer group-hover:text-red-500" %}</button>
                {% endif %}
                  
                  <a href="{% url 'articles:article_detail' article.id %}" class="group mx-2  border-2 px-4 py-2 border-gray-500 group-hover:border-white rounded-lg group-hover:bg-yellow-600">{% heroicon_solid "eye" class="text-yellow-500 cursor-pointer group-hover:text-white" %}</a>

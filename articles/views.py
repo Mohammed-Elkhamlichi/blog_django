@@ -4,15 +4,17 @@ from django.http import JsonResponse
 from .models import Article, Category, WebsiteInfo
 from .serializers import ArticleSerializer
 from django.db.models import Q
+from rest_framework.decorators import api_view
 
 
 # Create your views here.
 # Favorate Article
+@api_view(("GET",))
 def favorate_article(request, article_id):
-    article = Article.objects.get(pk=article_id)
-    articleSerializer = ArticleSerializer(data=article)
-    print(request.GET)
-    return Response(data=articleSerializer)
+    article = Article.objects.get(id=article_id)
+    articleSerializer = ArticleSerializer(article, many=False)
+    print(article_id)
+    return Response(data={"dev": "Mohammed", "article": articleSerializer.data})
 
 
 # The Home Page
