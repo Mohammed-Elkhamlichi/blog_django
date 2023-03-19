@@ -1,5 +1,4 @@
-{% load static %}
-{% load static tailwind_tags %} 
+{% load static %} {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,18 +6,57 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        {% block meta_tags %}{% endblock meta_tags %}
-        {% tailwind_css %}
+        {% block meta_tags %}{% endblock meta_tags %} {% tailwind_css %}
     </head>
 
     <body class="bg-[#EEEEEE]">
         {% include "navbar.html" %}
-        <div class="mx-auto flex flex-col justify-center items-center md:flex-row md:items-start md:justify-start w-full">
+        <div
+            class="mx-auto flex flex-col justify-center items-center md:flex-row md:items-start md:justify-start w-full"
+        >
             {% block body %} {% endblock body %} {% include "sidebar.html" %}
         </div>
-        {% include "footer.html" %}
-
+        {% include "footer.html" %} {% comment %}
         <script src="{% static 'js/navbar.js' %}"></script>
         <script src="{% static 'js/favorate_article.js' %}"></script>
+        {% endcomment %}
+        <script>
+            console.log("hello world from js console");
+            navbarUl = document.getElementById("navbar_ul");
+            BtnCloseOpenNavbar = document.getElementById("navbar_btn_close_open");
+            BtnCloseOpenNavbar.addEventListener("click", (e) => {
+                if (navbarUl.classList[0] === "flex") {
+                    console.log("nav closed");
+                    navbarUl.setAttribute("class", "hidden z-50");
+                } else if (navbarUl.classList[0] === "hidden") {
+                    navbarUl.setAttribute(
+                        "class",
+                        "flex flex-col items-right absolute left-0 right-0 top-16  bg-[#B9F3E4] w-full h-screen sm:hidden z-50"
+                    );
+                }
+                console.log(navbarUl.classList);
+            });
+            // console.log({ navbarUl, BtnCloseOpenNavbar });
+        </script>
+        <script>
+            console.log("favorate article js file");
+            const favorateBtn = document.getElementsByClassName("favorate_btn");
+            console.log({ favorateBtn });
+            const favorate = () => {
+                for (let index = 0; index < favorateBtn.length; index++) {
+                    favorateBtn[index].addEventListener("click", (e) => {
+                        const btn = favorateBtn[index];
+                        const articleId = btn.getAttribute("id").split("_");
+                        console.log({ btn, article_id: Number(articleId[0]) });
+                        console.log("btn clicked", { "article id": articleId[1] });
+                        fetch(`/favorate/article/${articleId[0]}?query=${articleId[1]}`)
+                            .then((res) => res.json())
+                            .then((data) => console.log({ data_favorate_article: data }))
+                            .catch((error) => console.log({ error_favorate_article: error }));
+                    });
+                }
+            };
+            favorate();
+        </script>
     </body>
 </html>

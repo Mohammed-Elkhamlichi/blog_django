@@ -13,7 +13,15 @@ from rest_framework.decorators import api_view
 def favorate_article(request, article_id):
     article = Article.objects.get(id=article_id)
     articleSerializer = ArticleSerializer(article, many=False)
-    print(article_id)
+    if request.GET["query"] == "like":
+        user = article.likes.get(id=request.user.id)
+        article.likes.get(id=request.user.id).delete()
+        article.save()
+        print("article like user id", user)
+    elif request.GET["query"] == "unlike":
+        print("article unlike user id")
+
+    print(request.GET["query"])
     return Response(data={"dev": "Mohammed", "article": articleSerializer.data})
 
 
